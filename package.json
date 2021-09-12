@@ -4,12 +4,16 @@
   "description": "tutorial",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "ndrs-wlkr",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^5.1.1",
     "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }

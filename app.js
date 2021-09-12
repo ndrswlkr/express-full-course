@@ -1,9 +1,23 @@
-const l = require('lodash')
+const http = require('http')
+const {createReadStream} = require('fs')
+const {readFileSync} = require('fs')
 
-let flat = l.flattenDeep([1,[[2],[3,4,5]],[6,7],8,9])
+console.log('hello people ')
 
-console.log(l.shuffle(flat))
+const server = http.createServer((req, res) =>{
+    let url = req.url
+    console.log(url)
+    //stream.on('data', (result)
+    //const text = readFileSync('./content/big.txt', 'utf8')
+    const stream = createReadStream('./content/big.txt', {encoding: 'utf8'})
+    stream.on('open', () => {
+        stream.pipe(res)
+    })
+    stream.on('error', () =>{
+        res.end(err)
+    })
+    
 
-let list = 'vorname andreas nachname walker strasse hinterwinkelstrasse nummer 3 ort selzach'.split(' ')
-let person = l.kebabCase(list)
-console.log(person)
+})
+
+server.listen(5000, ()=>{console.log('listening on port 5000')})

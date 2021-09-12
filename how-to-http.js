@@ -1,10 +1,22 @@
 const http = require('http')
-
-const server = http.createServer((req, res) =>{
+//create server
+const server = http.createServer((req, res) => {
     let url = req.url
-    console.log(url)
-    res.end("congrats, you connected with http-module")
-
+    if (url === '/') {
+        res.end('Home Page')
+    } else if (url === '/about') {
+        //Blocking Code
+        for (let i = 0; i < 1000; i++) {
+            for (let j = 0; j < 1000; j++) {
+                console.log(` ${i} ${j}`)
+            }
+        }
+        res.end('About Page')
+    } else {
+        res.end("congrats, you connected with http-module")
+    }
 })
-
-server.listen(5000, ()=>{console.log('listening on port 5000')})
+//start listening
+server.listen(5000, () => {
+    console.log('listening on port 5000')
+})
